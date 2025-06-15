@@ -1,8 +1,13 @@
- # Fitness Booking System 🏋️‍♂️
+# Fitness Booking System
 
 A modern RESTful API for managing fitness class bookings, built with FastAPI and PostgreSQL.
 
-## Features ✨
+## Video Walkthrough and Live Demo
+
+- Video Walkthrough: https://www.loom.com/share/a2de2b71bd22446b825b0e7f90897042?sid=525e6001-263e-41cb-8285-0e68bf88cd76
+- Live Demo: http://54.159.94.167/
+
+## Features
 
 - **Class Management**: View and manage fitness classes
 - **Booking System**: Easy class booking with email notifications
@@ -11,7 +16,7 @@ A modern RESTful API for managing fitness class bookings, built with FastAPI and
 - **Docker Support**: Easy deployment with Docker
 - **PostgreSQL Database**: Reliable data storage with SQLModel
 
-## Tech Stack 🛠
+## Tech Stack
 
 - **Backend**: FastAPI, Python 3.11
 - **Database**: PostgreSQL
@@ -19,11 +24,12 @@ A modern RESTful API for managing fitness class bookings, built with FastAPI and
 - **Containerization**: Docker
 - **Frontend**: HTML, CSS (with modern design)
 
-## Prerequisites 📋
+## Prerequisites
 
 - Python 3.11+
 - Docker (optional)
 - PostgreSQL (if running locally)
+- Postman (for API testing)
 
 ## Installation 🚀
 
@@ -77,13 +83,116 @@ docker build -t fitness-booking .
 docker run -d -p 8000:8000 --env-file .env fitness-booking
 ```
 
-## API Endpoints 🌐
+## API Documentation 📚
 
-- `GET /`: Landing page with API information
-- `GET /docs`: Interactive API documentation
-- `GET /classes`: List all available fitness classes
-- `POST /book`: Book a fitness class
-- `GET /bookings`: View bookings by email
+### Base URL
+```
+http://localhost:8000
+```
+
+### Available Endpoints
+
+#### 1. Get All Classes
+```bash
+# cURL
+curl -X GET "http://localhost:8000/classes?timezone=UTC"
+
+# Postman
+GET http://localhost:8000/classes?timezone=UTC
+```
+
+#### 2. Book a Class
+```bash
+# cURL
+curl -X POST "http://localhost:8000/book" \
+     -H "Content-Type: application/json" \
+     -d '{
+           "class_id": 1,
+           "client_name": "John Doe",
+           "client_email": "john@example.com"
+         }'
+
+# Postman
+POST http://localhost:8000/book
+Content-Type: application/json
+
+{
+    "class_id": 1,
+    "client_name": "John Doe",
+    "client_email": "john@example.com"
+}
+```
+
+#### 3. Get Bookings by Email
+```bash
+# cURL
+curl -X GET "http://localhost:8000/bookings?email=john@example.com"
+
+# Postman
+GET http://localhost:8000/bookings?email=john@example.com
+```
+
+### Postman Collection
+
+You can import the following Postman collection to test all endpoints:
+
+```json
+{
+  "info": {
+    "name": "Fitness Booking API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Get All Classes",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8000/classes?timezone=UTC",
+          "query": [
+            {
+              "key": "timezone",
+              "value": "UTC"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Book a Class",
+      "request": {
+        "method": "POST",
+        "url": "http://localhost:8000/book",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"class_id\": 1,\n    \"client_name\": \"John Doe\",\n    \"client_email\": \"john@example.com\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Get Bookings by Email",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8000/bookings?email=john@example.com",
+          "query": [
+            {
+              "key": "email",
+              "value": "john@example.com"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
+```
 
 ## Project Structure 📁
 
@@ -100,7 +209,7 @@ fitness_booking/
 └── Dockerfile        # Docker configuration
 ```
 
-## Contributing 🤝
+## Contributing
 
 1. Fork the repository
 2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
@@ -108,17 +217,17 @@ fitness_booking/
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-## License 📝
+## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-## Contact 📧
+## Contact
 
 Pavan Kumar - [GitHub Profile](https://github.com/Pavankuamr14)
 
 Project Link: [https://github.com/Pavankuamr14/Fitness-booking.git](https://github.com/Pavankuamr14/Fitness-booking.git)
 
-## Acknowledgments 🙏
+## Acknowledgments
 
 - FastAPI for the amazing web framework
 - SQLModel for the powerful ORM

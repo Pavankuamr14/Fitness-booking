@@ -1,7 +1,8 @@
-from datetime import datetime
+from pytz import timezone as pytz_timezone
 import pytz
 
-def ist_to_timezone(ist_datetime: datetime, to_tz: str = "UTC") -> datetime:
-    ist = pytz.timezone("Asia/Kolkata")
-    target = pytz.timezone(to_tz)
-    return ist.localize(ist_datetime).astimezone(target)
+def ist_to_timezone(dt_ist, to_tz: str = "UTC"):
+    ist = pytz_timezone("Asia/Kolkata")
+    target = pytz_timezone(to_tz)
+    dt_localized = ist.localize(dt_ist) if dt_ist.tzinfo is None else dt_ist.astimezone(ist)
+    return dt_localized.astimezone(target)
