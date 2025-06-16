@@ -5,7 +5,7 @@ A modern RESTful API for managing fitness class bookings, built with FastAPI and
 ## Video Walkthrough and Live Demo
 
 - Video Walkthrough: https://www.loom.com/share/a2de2b71bd22446b825b0e7f90897042?sid=525e6001-263e-41cb-8285-0e68bf88cd76
-- Live Demo: http://54.159.94.167/
+- Live Demo: http://54.159.94.167/ (open it in incognito mode) 
 
 ## Features
 
